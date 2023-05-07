@@ -20,8 +20,8 @@ import { CodeJudgeService } from '../../services/code-judge.service';
 export class HomeComponent implements OnInit, AfterViewInit {
   langs: string[] = ['Java', 'Python', 'C', 'Kotlin', 'JavaScript'];
 
-  @ViewChild('lang') private selectedLang!: ElementRef<HTMLElement>;
-  @ViewChild('editor') private editor!: ElementRef<HTMLElement>;
+  @ViewChild('lang') private selectedLang!: ElementRef<HTMLInputElement>;
+  @ViewChild('editor') private editor!: ElementRef<HTMLInputElement>;
   defaultCode = `import java.util.*;
 
 public class MySolution { 
@@ -67,10 +67,10 @@ public class MySolution {
     console.log('Code Judge initiated');
     let data = {
       problemid: '69',
-      lang: this.selectedLang,
-      code: this.editor.nativeElement,
+      lang: this.selectedLang.nativeElement.value,
+      code: this.editor.nativeElement.value,
     };
-
+    console.log(data);
     this._code.judgeCode(data).subscribe({
       next: (data: any) => {
         console.log(data);

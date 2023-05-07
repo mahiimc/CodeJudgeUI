@@ -62,14 +62,11 @@
   <div class="solution-section">
     <div>
       <p>Language :</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Language</mat-label>
-        <mat-select #lang>
-          <mat-option *ngFor="let lang of langs" [value]="lang">
-            {{ lang }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+      <select #lang>
+        <option *ngFor="let lang of langs" value="{{ lang }}">
+          {{ lang }}
+        </option>
+      </select>
     </div>
     <div class="code-editor" #editor></div>
     <div class="compiler">
