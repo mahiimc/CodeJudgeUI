@@ -62,7 +62,7 @@
   <div class="solution-section">
     <div>
       <p>Language :</p>
-      <select #lang>
+      <select (change)="onChangeLanguage($event)">
         <option *ngFor="let lang of langs" value="{{ lang }}">
           {{ lang }}
         </option>

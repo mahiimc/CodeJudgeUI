@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('lang') private selectedLang!: ElementRef<HTMLInputElement>;
   @ViewChild('editor') private editor!: ElementRef<HTMLInputElement>;
+  aceEditor!: any;
   defaultCode = `import java.util.*;
 
 public class MySolution { 
@@ -38,13 +39,15 @@ public class MySolution {
   }
   ngAfterViewInit(): void {
     ace.config.set('fontSize', '14px');
-    const aceEditor = ace.edit(this.editor.nativeElement);
-    aceEditor.setTheme('ace/theme/monokai');
-    aceEditor.session.setMode(`ace/mode/java`);
-    aceEditor.session.setValue(this.defaultCode);
+    this.aceEditor = ace.edit(this.editor.nativeElement);
+    this.aceEditor.setTheme('ace/theme/monokai');
+    this.aceEditor.session.setMode(`ace/mode/java`);
+    this.aceEditor.session.setValue(this.defaultCode);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.prepareDefaultMap();
+  }
 
   prepareDefaultMap() {
     this.defaultsMap.set('Java', {
@@ -77,5 +80,11 @@ public class MySolution {
       },
       error: console.log,
     });
+  }
+
+  onChangeLanguage(data: any) {
+    const code = this.defaultsMap.get(data.target.value) as Code;
+    this.aceEditor.session.setMode(`ace/mode/${code.mode}`);
+    this.aceEditor.session.setValue(code.code);
   }
 }
