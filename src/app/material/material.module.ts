@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbar, MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTabsModule,
   ],
   declarations: [],
   exports: [
@@ -22,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatToolbarModule,
     MatSelectModule,
     MatFormFieldModule,
+    MatTabsModule,
   ],
 })
 export class MaterialModule {}
